@@ -20,7 +20,6 @@ class Sort{
 
   /**
    * 冒泡排序
-   * @return array
    */
   public function bubbleSort():void {
     $tag = true;
@@ -36,11 +35,26 @@ class Sort{
     }
   }
 
+  /**
+   *选择排序
+   */
+  public function selectSort():void {
+    $len = count($this->arr);
+    for ($i = 0;$i < $len;$i++){
+      $min = $i;
+      for ($j = $i+1;$j < $len;$j++){
+        if ($this->arr[$min] > $this->arr[$j]){
+          list($this->arr[$min],$this->arr[$j]) = [$this->arr[$j],$this->arr[$min]];
+        }
+      }
+    }
+  }
+
 }
 
 $arr = [10,1,98,78,45,24,33,21,76,11];
 $sort = new Sort($arr);
-$sort->bubbleSort();
+$sort->selectSort();
 print_r($sort->getArr());
 
 
